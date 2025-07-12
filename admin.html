@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SetPro - Painel Admin</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      padding: 20px;
+      color: #003366;
+    }
+    .admin-panel {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    input[type=text], input[type=password] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #007acc;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+    .hidden { display: none; }
+    .section {
+      margin-top: 20px;
+    }
+    label {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-panel">
+    <h2>Login SetPro Admin</h2>
+    <div id="login-section">
+      <input type="text" id="username" placeholder="Usuário">
+      <input type="password" id="password" placeholder="Senha">
+      <button onclick="login()">Entrar</button>
+    </div>
+
+    <div id="control-section" class="hidden">
+      <h2>Painel de Controle</h2>
+      <div class="section">
+        <label>Jogador 1A</label>
+        <input type="text" id="player1a" placeholder="Nome Jogador 1A">
+        <label>Jogador 1B</label>
+        <input type="text" id="player1b" placeholder="Nome Jogador 1B">
+      </div>
+      <div class="section">
+        <label>Jogador 2A</label>
+        <input type="text" id="player2a" placeholder="Nome Jogador 2A">
+        <label>Jogador 2B</label>
+        <input type="text" id="player2b" placeholder="Nome Jogador 2B">
+      </div>
+      <div class="section">
+        <button onclick="sendPoint(1)">+1 Dupla 1</button>
+        <button onclick="sendPoint(2)">+1 Dupla 2</button>
+        <button onclick="resetMatch()">Resetar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const correctUser = "admin";
+    const correctPass = "1234";
+
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+
+      if (user === correctUser && pass === correctPass) {
+        document.getElementById("login-section").classList.add("hidden");
+        document.getElementById("control-section").classList.remove("hidden");
+      } else {
+        alert("Usuário ou senha incorretos");
+      }
+    }
+
+    function sendPoint(player) {
+      console.log(`+1 ponto para dupla ${player}`);
+    }
+
+    function resetMatch() {
+      console.log("Partida resetada");
+    }
+  </script>
+</body>
+</html>
